@@ -1,0 +1,7 @@
+delete_user.form:
+  path: '/delete-students'
+  defaults:
+    _form: '\Drupal\delete_user\Form\DeleteStudentForm'
+    _title: 'Delete graduated students'
+  requirements:
+    _permission: 'access content'

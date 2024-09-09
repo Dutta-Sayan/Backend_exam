@@ -1,0 +1,9 @@
+services:
+  email_login_otp.login_redirect:
+    class: Drupal\email_login_otp\EventSubscriber\OtpRedirectSubscriber
+    arguments: ['@current_user', '@tempstore.private', '@email_login_otp.otp', '@current_route_match', '@config.factory', '@messenger', '@entity_type.manager']
+    tags:
+      - { name: event_subscriber }
+  email_login_otp.otp:
+    class: Drupal\email_login_otp\Services\Otp
+    arguments: ['@database', '@plugin.manager.mail', '@language_manager', '@password', '@tempstore.private', '@config.factory', '@extension.path.resolver']

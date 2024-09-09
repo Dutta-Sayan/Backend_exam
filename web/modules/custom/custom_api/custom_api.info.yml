@@ -1,0 +1,5 @@
+name: Rest API Resource
+type: module
+package: Custom
+description: Module for implementing Custom Rest Service.
+core_version_requirement: ^10 || ^11

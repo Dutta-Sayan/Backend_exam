@@ -1,0 +1,16 @@
+<?php
+
+use Drupal\node\NodeInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Access\AccessResult;
+
+/**
+ * Implements hook_node_access().
+ */
+function custom_access_node_access(NodeInterface $node, $op, AccountInterface $account) {
+  if ($account->isAnonymous()) {
+    if ($node->gettype() == 'dashboard')
+    return AccessResult::forbidden()->cachePerPermissions();
+  }
+  return AccessResult::neutral()->cachePerPermissions();
+}

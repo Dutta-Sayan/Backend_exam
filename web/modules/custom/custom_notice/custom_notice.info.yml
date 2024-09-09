@@ -1,0 +1,5 @@
+name: 'Custom Notice Removal'
+type: module
+description: 'This module removes past date notices.'
+package: Custom
+core_version_requirement: ^10 || ^11

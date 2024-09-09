@@ -1,0 +1,71 @@
+uuid: ee6b38eb-cc04-4cd3-9bdf-66518506d214
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dashboard
+    - views.view.documents
+    - views.view.inactive_students
+  module:
+    - layout_builder
+    - layout_discovery
+    - user
+    - views
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          b3b7fd98-00ca-47ca-9ea8-6f7c50840824:
+            uuid: b3b7fd98-00ca-47ca-9ea8-6f7c50840824
+            region: content
+            configuration:
+              id: 'extra_field_block:node:dashboard:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+          974b481f-491d-4509-9d2d-26dd966a805e:
+            uuid: 974b481f-491d-4509-9d2d-26dd966a805e
+            region: content
+            configuration:
+              id: 'views_block:inactive_students-block_1'
+              label: ''
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 1
+            additional: {  }
+          8e427034-1c8f-4bff-acf6-05c31f1ac736:
+            uuid: 8e427034-1c8f-4bff-acf6-05c31f1ac736
+            region: content
+            configuration:
+              id: 'views_block:documents-block_1'
+              label: ''
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+id: node.dashboard.default
+targetEntityType: node
+bundle: dashboard
+mode: default
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

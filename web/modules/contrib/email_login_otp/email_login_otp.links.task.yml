@@ -1,0 +1,5 @@
+email_login_otp.otp_settings:
+  route_name: email_login_otp.otp_settings_form
+  title: '2FA Settings'
+  base_route: entity.user.canonical
+  weight: 100

@@ -1,0 +1,34 @@
+email_login_otp.otp_form:
+  path: '/login-otp'
+  defaults:
+    _form: '\Drupal\email_login_otp\Form\OTPForm'
+    _title: 'OTP'
+  requirements:
+    _access: 'TRUE'
+email_login_otp.resend:
+  path: '/login-otp/resend'
+  defaults:
+    _controller: '\Drupal\email_login_otp\Controller\GeneralController::resend'
+    _title: 'Resend'
+  requirements:
+    _permission: 'access content'
+email_login_otp.otp_settings_form:
+  path: '/user/{user}/2fa-settings'
+  defaults:
+    _form: '\Drupal\email_login_otp\Form\OtpSettingsForm'
+    _title: '2FA Settings'
+  requirements:
+    _custom_access: '\Drupal\email_login_otp\Controller\GeneralController::access'
+  options:
+    parameters:
+      user:
+        type: entity:user
+email_login_otp.email_login_otp_config_form:
+  path: '/admin/config/email_login_otp/config'
+  defaults:
+    _form: '\Drupal\email_login_otp\Form\ConfigForm'
+    _title: 'ConfigForm'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

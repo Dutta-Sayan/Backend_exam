@@ -1,0 +1,6 @@
+email_login_otp.email_login_otp_config_form:
+  title: 'Email Login OTP'
+  route_name: email_login_otp.email_login_otp_config_form
+  description: 'Email Login OTP settings.'
+  parent: system.admin_config_system
+  weight: 99
