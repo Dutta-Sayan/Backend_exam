@@ -1,0 +1,53 @@
+<?php
+use Drupal\user\Entity\User;
+
+/**
+ * Deleting the graduated students.
+ *
+ * @param mixed $uids
+ *   User ids of students to be deleted.
+ * @param mixed $context
+ *   Stores the messages after deletion.
+ *
+ * @return void
+ */
+function delete_students($uids, &$context){
+    // Message to be displayed during batch process.
+    $message = 'Deleting ALL Students ...';
+    // Stores the results of successful deletion.
+    $results = array();
+    foreach ($uids as $uid) {
+      // Loads the account to be deleted.
+      $account = User::load($uid);
+      $results[] = $account->delete();
+    }
+    // Stores the result messages to be rendered.
+    $context['message'] = $message;
+    $context['results'] = $results;
+}
+
+/**
+ * Rendering batch execution results.
+ *
+ * @param mixed $success
+ *   Successful batch processing return value.
+ * @param mixed $results
+ *   Result messages of batch processing.
+ * @param mixed $operations
+ *   Operations to be performed.
+ * @return void
+ */
+function delete_students_finished($success, $results, $operations) {
+    // Adding a message for successful batch processing.
+    if ($success) {
+        $message = \Drupal::translation()->formatPlural(
+            count($results),
+            'One post processed.', '@count posts processed.'
+        );
+    }
+    else {
+      // Error message.
+      $message = t('Finished with an error.');
+    }
+    \Drupal::messenger()->addStatus($message);
+}

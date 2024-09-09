@@ -1,0 +1,33 @@
+<?php
+
+use Drupal\node\Entity\Node;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function custom_notice_views_pre_render(ViewExecutable $view) {
+
+  // In a notice view comparing notice date and current date.
+  if ($view->id() == 'notices') {
+    foreach ($view->result as $key => $value) {
+      // Fetching the notice node.
+      $node = Node::load($value->nid);
+      // Fetchng the date field value of the notice.
+      $unix = $node->get('field_notice_date')->getValue();
+      // Extracting the value from array.
+      $date = date($unix[0]['value']);
+      // Converting to date format.
+      $notice_date = date('d/m/Y', strtotime($date)); 
+      // Fetching the current time.
+      $current_time = \Drupal::time()->getCurrentTime();
+      // Converting the current time to date format.
+      $current_date = date('d/m/Y', $current_time); 
+      // Deleting the notice from view having previous date than current one.
+      if ($notice_date < $current_date) {
+        unset ($view->result[$key]);
+      }
+    }
+  }
+  
+}
