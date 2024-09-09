@@ -1,9 +1,0 @@
-uuid: 6fe04bcb-e059-4746-bb70-25a2d8f46e8a
-langcode: en
-status: true
-dependencies: {  }
-name: Stream
-vid: stream
-description: null
-weight: 0
-new_revision: false
