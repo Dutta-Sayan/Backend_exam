@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
- * Provides a resource to get list of movie content type nodes.
+ * Provides a resource to get list of student users.
  *
  * @RestResource(
  *  id = "custom_get_rest_resource",
@@ -92,9 +92,56 @@ class CustomRestResource extends ResourceBase {
     // Stores the user objects.
     $users = User::loadMultiple($uids);
 
-    // Creating a serialization data.
-    $response = new ResourceResponse($users);
-    $response->addCacheableDependency($users);
+    // Storing the user objects to show.
+    $result_users = [];
+    // Fetching the joining year value from query.
+    $joining_year = \Drupal::request()->query->get('joining_year');
+    $stream = \Drupal::request()->query->get('stream');
+    // If joining year is given, checking if such a year exists.
+    if (isset($joining_year)) {
+      foreach ($users as $user) {
+        // Getting the joining year of each student and checking.
+        $year = $user->get('field_joining_year')->getValue();
+        // If joining year matches, putting it into the result array.
+        if ($year[0]['value'] == $joining_year) {
+          array_push($result_users, $user);
+          $response = new ResourceResponse($result_users);
+          $response->addCacheableDependency($result_users);
+        }
+      }
+      // If no such results exists, returning message.
+      if (empty($result_users)) {
+        $error[] = "No value exists";
+        $response = new ResourceResponse($error);
+        $response->addCacheableDependency($error);
+      }
+    }
+    if (isset($stream)) {
+      foreach ($users as $user) {
+        // Getting the stream of each student and checking.
+        // As the stream is taxonomy type, inputting a id and checking
+        // if taxonomy term exists.
+        $student_stream = $user->get('field_stream')->target_id;
+        // If stream matches, putting it into the result array.
+        if ($student_stream == $stream) {
+          array_push($result_users, $user);
+          $response = new ResourceResponse($result_users);
+          $response->addCacheableDependency($result_users);
+        }
+      }
+      // If no such results exists, returning message.
+      if (empty($result_users)) {
+        $error[] = "No value exists";
+        $response = new ResourceResponse($error);
+        $response->addCacheableDependency($error);
+      }
+    }
+    // If no query string is passed, all users are shown.
+    else {
+      // Creating a serialization data.
+      $response = new ResourceResponse($users);
+      $response->addCacheableDependency($users);
+    }
     return $response;
   }
 
