@@ -1,0 +1,103 @@
+uuid: 569d6349-b05a-41fb-a5d6-20fbbe436495
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.home.body
+    - node.type.home
+    - views.view.active_students
+    - views.view.notices
+  module:
+    - layout_builder
+    - layout_discovery
+    - text
+    - user
+    - views
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          column_widths: 33-67
+        components:
+          5adee3bd-949d-4bad-b7e3-112831b918e5:
+            uuid: 5adee3bd-949d-4bad-b7e3-112831b918e5
+            region: first
+            configuration:
+              id: 'views_block:active_students-block_1'
+              label: ''
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 0
+            additional: {  }
+          664215c2-22f3-4baf-893f-36e0d876d694:
+            uuid: 664215c2-22f3-4baf-893f-36e0d876d694
+            region: second
+            configuration:
+              id: 'views_block:notices-block_1'
+              label: ''
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          46e54511-f1c4-4fea-b0b5-b8455be4673b:
+            uuid: 46e54511-f1c4-4fea-b0b5-b8455be4673b
+            region: content
+            configuration:
+              id: 'extra_field_block:node:home:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+          beba47ff-390d-4ad8-aa4c-5d1cd9d37178:
+            uuid: beba47ff-390d-4ad8-aa4c-5d1cd9d37178
+            region: content
+            configuration:
+              id: 'field_block:node:home:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+id: node.home.default
+targetEntityType: node
+bundle: home
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

@@ -1,0 +1,13 @@
+email_login_otp.frontend:
+  js:
+    js/email_login_otp.js: {}
+  css:
+    theme:
+      css/email_login_otp.css: {}
+  dependencies:
+    - core/drupalSettings
+    - core/jquery.once
+    - core/jquery
+    - core/jquery.form
+    - core/drupal.ajax
+    - core/drupal

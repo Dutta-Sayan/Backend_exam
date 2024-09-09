@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: ijfbzDTN4CbE7Sr-6ubWzy_t1vH4OtU1doNCLssVz-4
+langcode: en
+uuid: 5ac2d215-5efa-4d5a-8b57-a327387a2d49
+name: 'SITE 3'
+mail: sayan.dutta@innoraft.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node/9
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
+mail_notification: ''

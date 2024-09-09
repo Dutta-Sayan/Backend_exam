@@ -1,0 +1,24 @@
+uuid: 07f11b5c-904b-4531-af58-6a281fd14bd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.subjects.field_stream
+    - field.field.node.subjects.field_upload_material
+    - node.type.subjects
+  module:
+    - user
+id: node.subjects.teaser
+targetEntityType: node
+bundle: subjects
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_stream: true
+  field_upload_material: true

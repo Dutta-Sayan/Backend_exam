@@ -1,0 +1,10 @@
+name: 'Email Login OTP'
+type: module
+description: 'Provides login via Email OTP.'
+core_version_requirement: ^9.5 || ^10
+configure: email_login_otp.email_login_otp_config_form
+
+# Information added by Drupal.org packaging script on 2024-07-12
+version: '1.1.7'
+project: 'email_login_otp'
+datestamp: 1720776532

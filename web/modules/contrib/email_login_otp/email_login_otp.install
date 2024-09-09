@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for email_login_otp module.
+ */
+
+/**
+ * Database schema.
+ */
+function email_login_otp_schema() {
+  $schema['email_login_otp'] = [
+    'description' => 'Stores the generated OTP per user.',
+    'fields'      => [
+      'uid' => [
+        'description' => 'UID of the User.',
+        'type'        => 'int',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+        'default'     => 0,
+      ],
+      'otp' => [
+        'description' => 'Hashed otp of the User.',
+        'type'        => 'varchar_ascii',
+        'length'      => 255,
+        'not null'    => TRUE,
+        'default'     => 0,
+      ],
+      'expiration' => [
+        'description' => 'Time when otp will expire.',
+        'type'        => 'varchar_ascii',
+        'length'      => 50,
+        'not null'    => TRUE,
+        'default'     => 0,
+      ],
+    ],
+  ];
+  $schema['otp_settings'] = [
+    'description' => 'Stores OTP settings of a user.',
+    'fields'      => [
+      'uid' => [
+        'description' => 'UID of the User.',
+        'type'        => 'int',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+        'default'     => 0,
+      ],
+      'email' => [
+        'description' => 'Email of the user.',
+        'type'        => 'varchar_ascii',
+        'length'      => 255,
+        'not null'    => TRUE,
+        'default'     => '',
+      ],
+      'enabled' => [
+        'description' => 'OTP enabled or not.',
+        'type'        => 'int',
+        'length'      => 11,
+        'not null'    => TRUE,
+        'default'     => 0,
+      ],
+    ],
+  ];
+  return $schema;
+}
+
+/**
+ * The install hook.
+ */
+function email_login_otp_install() {
+  $config = \Drupal::service('config.factory')->getEditable('email_login_otp.config');
+  $config
+    ->set('allow_enable_disable', $config->get('email_login_otp')['allow_enable_disable'])
+    ->set('redirect', $config->get('email_login_otp')['redirect'])
+    ->set('message_type', $config->get('email_login_otp')['message_type'])
+    ->set('redirect_message', $config->get('email_login_otp')['redirect_message'])
+    ->save();
+}

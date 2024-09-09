@@ -1,0 +1,5 @@
+name: 'Custom Access'
+type: module
+description: 'This module restricts page acces to anonymous users'
+package: Custom
+core_version_requirement: ^10 || ^11

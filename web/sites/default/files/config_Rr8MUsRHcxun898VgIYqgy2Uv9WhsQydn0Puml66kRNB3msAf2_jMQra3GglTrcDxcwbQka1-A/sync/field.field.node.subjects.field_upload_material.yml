@@ -1,0 +1,27 @@
+uuid: c04a1f94-efaa-42cb-b521-29b4554c408d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_upload_material
+    - node.type.subjects
+  module:
+    - file
+id: node.subjects.field_upload_material
+field_name: field_upload_material
+entity_type: node
+bundle: subjects
+label: 'Upload Material'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt pdf mkv mp4 webm'
+  max_filesize: '10 MB'
+  description_field: true
+field_type: file
