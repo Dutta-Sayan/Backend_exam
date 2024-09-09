@@ -8,13 +8,7 @@
 !/web/sites/*/services.yml
 
 # Ignore paths that contain user-generated content.
-/web/sites/default/files/2024-09
-/web/sites/default/files/css
-/web/sites/default/files/js
-/web/sites/default/files/media-icons
-/web/sites/default/files/php
-/web/sites/default/files/pictures
-/web/sites/default/files/styles
+/web/sites/*/files
 /web/sites/*/private
 
 /drush/Commands/contrib/

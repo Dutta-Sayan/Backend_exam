@@ -1,0 +1,8 @@
+uuid: 76add25e-bc5c-40a1-bb97-ffea29252a97
+langcode: en
+status: true
+dependencies: {  }
+id: stream
+label: Stream
+description: ''
+locked: false
